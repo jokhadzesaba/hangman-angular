@@ -27,8 +27,8 @@ export class AppComponent implements OnInit {
       this.arr1 = Array(this.arr.length).fill('_');
       this.guessed = false
       this.playerStatus = "playing"
-      console.log(word);
-      console.log(this.arr1);
+      console.log("searching word in inspect hah! you might find it");
+      
     });
   }
   validateInput() {
