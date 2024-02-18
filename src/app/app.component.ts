@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
       this.guessed = false;
       this.playerStatus = 'playing';
       console.log('searching word in inspect hah! you might find it');
-      console.log(this.word);
+
     });
   }
   validateInput() {
