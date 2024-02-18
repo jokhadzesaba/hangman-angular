@@ -99,13 +99,14 @@
     </ul>
   </div>
   <div *ngIf="playerStatus === 'playing'">
-    <p>record:{{record}}</p>
-    <span>words guessed: {{ guessedWords }} -</span>
-    <span> lives: {{ livesLeft }}</span>
+    <span>Words Guessed: {{ guessedWords }} -</span>
+    <span> Lives: {{ livesLeft }} -</span>
+    <span>Record: {{ record }}</span>
   </div>
   <div *ngIf="playerStatus === 'game lost'">
     <p>You Lost 🙁</p>
-    <p>you have guessed {{ guessedWords }} word</p>
+    <p>You have guessed {{ guessedWords }} word</p>
+    <p *ngIf="newRecord">But you break record! Congrats!</p>
     <button (click)="playGame()">Play again</button>
   </div>
   <div *ngIf="playerStatus === 'playing' || 'game lost'">

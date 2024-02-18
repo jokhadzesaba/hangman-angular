@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
   public playerStatus = 'not playing';
   public guessedWords = 0;
   public record = 0;
+  public newRecord = false;
   constructor(private service: HttpServiceService) {}
   ngOnInit(): void {}
   playGame() {
@@ -29,11 +30,11 @@ export class AppComponent implements OnInit {
       this.hint = word.hint;
       this.arr = this.word.split('');
       this.arr1 = Array(this.arr.length).fill('_');
-      this.guessed = false;
-      this.playerStatus = 'playing';
-      console.log('searching word in inspect hah! you might find it');
-
     });
+    console.log('searching word in inspect hah! you might find it');
+    this.playerStatus = 'playing';
+    this.guessed = false;
+    this.newRecord = false
   }
   validateInput() {
     this.checkIfWin();
@@ -45,6 +46,7 @@ export class AppComponent implements OnInit {
           this.playerStatus = 'game lost';
           if (this.guessedWords > this.record) {
             this.service.updateRecord(this.guessedWords);
+            this.newRecord = true
           }
         }
       } else {
