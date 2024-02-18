@@ -62,11 +62,7 @@
           </li>
           <li>
             After losing all 5 lives, your final score will be displayed on the
-            leaderboard.
-          </li>
-          <li>
-            The leaderboard keeps track of the number of words guessed, and you
-            can aim to improve your score with each attempt.
+            screen.
           </li>
         </ul>
       </li>
@@ -103,12 +99,13 @@
     </ul>
   </div>
   <div *ngIf="playerStatus === 'playing'">
+    <p>record:{{record}}</p>
     <span>words guessed: {{ guessedWords }} -</span>
     <span> lives: {{ livesLeft }}</span>
   </div>
   <div *ngIf="playerStatus === 'game lost'">
     <p>You Lost 🙁</p>
-    <p>you have guessed: {{ guessedWords }} word</p>
+    <p>you have guessed {{ guessedWords }} word</p>
     <button (click)="playGame()">Play again</button>
   </div>
   <div *ngIf="playerStatus === 'playing' || 'game lost'">
@@ -129,6 +126,7 @@
     [(ngModel)]="enteredCharacter"
     placeholder="enter chatacter or word"
     required
+    (keyup.enter)="validateInput()"
   />
   <div *ngIf="playerStatus === 'playing'" class="buttons">
     <button (click)="validateInput()">Enter</button>

@@ -21,4 +21,7 @@ export class HttpServiceService {
         })
       );
   }
+  public getRecord(){
+    return this.http.get<number>("https://exercise-app-9b873-default-rtdb.europe-west1.firebasedatabase.app/words/record.json")
+  }
 }

@@ -17,10 +17,15 @@ export class AppComponent implements OnInit {
   public guessed = false;
   public playerStatus = "not playing";
   public guessedWords = 0;
+  public record = 0;
   constructor(private service: HttpServiceService) {}
   ngOnInit(): void {}
   playGame() {
+    this.service.getRecord().subscribe((res:number)=>{
+      this.record = res
+    })
     this.service.getRandomWord().subscribe((word) => {
+    
       this.word = word.word;
       this.hint = word.hint;
       this.arr = this.word.split('');
