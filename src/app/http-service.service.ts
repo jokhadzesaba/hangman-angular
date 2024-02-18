@@ -21,7 +21,17 @@ export class HttpServiceService {
         })
       );
   }
-  public getRecord(){
-    return this.http.get<number>("https://exercise-app-9b873-default-rtdb.europe-west1.firebasedatabase.app/words/record.json")
+  public getRecord() {
+    return this.http.get<number>(
+      'https://exercise-app-9b873-default-rtdb.europe-west1.firebasedatabase.app/words/record.json'
+    );
+  }
+  public updateRecord(newRecord: number) {
+    this.http
+      .patch(
+        'https://exercise-app-9b873-default-rtdb.europe-west1.firebasedatabase.app/words.json',
+        { record: newRecord }
+      )
+      .subscribe();
   }
 }
